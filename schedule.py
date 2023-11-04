@@ -3,7 +3,7 @@ import yaml
 import os
 
 
-file_path = os.path.join(os.getcwd(), "schedule.yaml")
+file_path = os.path.join(os.getcwd(), "settings.txt")
 with open(file_path) as file:
     data1 = yaml.safe_load(file)
 

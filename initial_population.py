@@ -16,7 +16,12 @@ def mk_random_folder(subject_list):
 
 def mk_random_configuration():
     """Creates a random valid configuration"""
+    tries = 0
+
     while True:
+        if tries >= 1000:
+            return 0
+
         subject_list_temp = schedule.subjects.copy()
         random.shuffle(subject_list_temp)
         folders_in_configuration = []
@@ -30,6 +35,8 @@ def mk_random_configuration():
         cfg = classes.Configuration(folders_in_configuration)
         if cfg.is_configuration_valid:
             return cfg
+        else:
+            tries += 1
         
 def create_initial_population(POPULATION_SIZE):
     population = [mk_random_configuration() for i in range(POPULATION_SIZE)]

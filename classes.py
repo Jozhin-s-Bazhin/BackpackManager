@@ -1,6 +1,12 @@
-FOLDER_WEIGHT = 50
-MAX_FOLDERS_PER_DAY = 4
-MAX_SUBJECTS_PER_FOLDER = 4
+import yaml
+
+
+with open("settings.txt") as file:
+    data = yaml.safe_load(file)
+    
+FOLDER_WEIGHT = data["folder_info"][0]["weight"]
+MAX_FOLDERS_PER_DAY = data["folder_info"][1]["max_folders"]
+MAX_SUBJECTS_PER_FOLDER = data["folder_info"][2]["max_subjects"]
 
 
 class Subject():
@@ -63,7 +69,7 @@ class Configuration():
             for subject in day.subjects:
 
                 for folder in self.folders:
-                    if subject in folder.subjects:
+                    if subject.name in [subject.name for subject in folder.subjects]:
                         if folder not in folders_in_day:
                             folders_in_day.append(folder)
 

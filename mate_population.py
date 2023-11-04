@@ -10,7 +10,7 @@ def fix_configuration(configuration):
     duplicate_subjects = {}
     fixed_folders = []
 
-    # Puts subjects into a list of lists instead of a list of folders to prevent weight errors (Please?)
+    # Puts subjects into a list of lists instead of a list of folders to prevent weight errors
     for folder in configuration.folders:
         new_folder = []
         for subject in folder.subjects:
@@ -54,8 +54,8 @@ def mate_configurations(parent1, parent2):
     """Takes two parent configurations as arguments and returns two child configurations by randomly swapping the folders in them"""
     
     while True:
-        child1 = copy.copy(parent1)
-        child2 = copy.copy(parent2)
+        child1 = copy.deepcopy(parent1)
+        child2 = copy.deepcopy(parent2)
         
         for index1, folder1 in enumerate(child1.folders):
             if random.randint(0,1) == 1:

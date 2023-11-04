@@ -1,12 +1,19 @@
 import initial_population
 import mate_population
+import yaml
 
 
-POPULATION_SIZE = 100
-CYCLE_COUNT = 25
+with open("settings.txt") as file:
+    data = yaml.safe_load(file)
+
+POPULATION_SIZE = data["population_info"][0]["population_size"]
+CYCLE_COUNT = data["population_info"][1]["cycle_count"]
 
 def find_best_config():
     population = initial_population.create_initial_population(POPULATION_SIZE)
+    
+    if isinstance(population, int):
+        return 0
 
     for i in range(CYCLE_COUNT):
         new_population = []
