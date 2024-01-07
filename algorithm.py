@@ -12,9 +12,6 @@ CYCLE_COUNT = data["population_info"][1]["cycle_count"]
 def find_best_config():
     population = initial_population.create_initial_population(POPULATION_SIZE)
     
-    if isinstance(population, int):
-        return 0
-
     for i in range(CYCLE_COUNT):
         new_population = []
 
