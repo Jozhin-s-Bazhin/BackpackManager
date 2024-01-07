@@ -1,78 +1,28 @@
-# Schedule data used to calculate optimal configuration
-
+#### SETTINGS ####
 
 # Subject info
 subjects:
-  - name: Aa
-    weight: 174
+  - name: Sub1  # The name of the subject
+    weight: 12345  # The weight of the subject
 
-  - name: Av
-    weight: 50  # No data
+  - name: Sub2
+    weight: 54321
 
-  - name: MEV
-    weight: 50  # No data
-
-  - name: Ge
-    weight: 50  # No data
-
-  - name: Gd
-    weight: 41
-
-  - name: LO
-    weight: 0
-
-  - name: Du
-    weight: 70
-
-  - name: En
-    weight: 106
-
-  - name: Fr
-    weight: 106
-
-  - name: Nd
-    weight: 241
-
-  - name: Bi
-    weight: 116
-
-  - name: Ch
-    weight: 70
-
-  - name: Fy
-    weight: 69
-
-  - name: Wi
-    weight: 50  # No data
-
-  - name: PW
-    weight: 50  # No data
-
+  # More...
 
 # Schedule
 days:
-  - subjects: [Bi, Fr, Gd, Ge, Wi, Wi, PW]  # Monday
-
-  - subjects: [Aa, Nd, Fy, Ch, Av, En, LO]  # Tuesday
-
-  - subjects: [Wi, Wi, Du, Gd]  # Wednesday
-
-  - subjects: [Nd, MEV, Fy, Fr, Wi, Ge, Bi]  # Thursday
-
-  - subjects: [Nd, Fr, Nd, En, LO, Ch]  # Friday
+  - subjects: [Subject1, Subject2]  # Each line represents a day. Use a list of subject names you defined above separated by commas.
+  - subjects: [Subject2, Subject1]  
+  # More...
 
 # Folder guidelines
 folder_info:
-  - weight: 100
-
+  - weight: 100  # Define the weight of a folder with no subjects
   - max_folders: 4  # Default: 4
-
   - max_subjects: 4  # Default: 4
 
 # Advanced
 population_info:
   - population_size: 100  # Default: 100
-
-  - cycle_count: 50  # Default: 25
-
-
+  - cycle_count: 50  # Default: 50
