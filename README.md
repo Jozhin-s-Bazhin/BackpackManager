@@ -1,9 +1,24 @@
-Hello, this is the guide on how to use backpackmanager. To run the program, simply double-click on the backpackmanager.exe file. This will create a shortcut to all the documents you need to use it. First, backpackmanager.exe, to run the program, second, README.txt, this document and third settings.txt. This is the most interesting one, this is the file where you store your schedule, subject information and some other settings. 
+# BackpackManager
+A Python script that optimises the way subject are organised inside folders to reduce the weight and amount of folders you have to carry. 
 
-Let's break it down. The document has four tabs: "Subject info", "Schedule", "Folder Info" and "Advanced". "Subject info" contains all the subjects and their weights and "Schedule" contains the schedule. When you fill them in, make sure that the names of the subjects match with the schedule. Otherwise, the program will not factor the subject in correctly. Now, if you open the file you will see that there is already a schedule in there. This is to illustrate the format the info should be written in and let you play around before you input your own schedule. 
+## Setup and usage
+- Install Python 3.11
+- Clone the repo: `git clone github.com/Jozhin-s-Bazhin/BackpackManager`
+- Edit `settings.txt` to your liking
+- Run `python3 backpackmanager.py` to get the optimal configuration. This can take some time.
 
-Then, the "Folder_info" tab. This contains three setting: "weight", "max_folders" and "max_subjects". "weight" represents the weight of the folder itself, "max_folders" is the maximal amount of folders per day and "max_subjects" is the maximum amount of subjects per folder. 
-
-And finally, the "Advanced" tab. This tab has only two settings: "population_size" and "cycle_count". These are settings that change the way the algorithm that calculates the optimal configuration behaves. If you just want to use the program, don't mess with them but if you want to play around, go ahead! 
-
-The algorithm that gets used in this program is a genetic algorithm. The way it works is that it creates a population of configurations ("population_size"), sorts them by weight, and removes the bottom half. Then, the remaining configurations are run trough a mating algorithm that gives an output of children that have similar traits to both of their parents. Because most of the children are missing subjects or have duplicates they get fixed by a function that removes duplicates and adds back missing subjects. Finally, the children and parents are added into the new population, and the cycle is repeated ("cycle_count" times). The constant removal and mating makes each cycle lighter until we get the best configuration. One final piece of information you need is that there is an optimal weight that can't really be exceeded. This is why you only need the default "population_size" and "cycle_count" to get the best answer.
+## Settings
+### Subjects
+Each line represents a subject. A subject has a name and weight. 
+### Days
+Each line represents a day. A day is nothing more than a list of subjects you defined above.
+### Folder guidelines
+This applies to all folders. 
+- `weight`: The weight of an empty folder. 
+- `max_folders`: This tells the algorithm how many folders it can put per day so they fit inside the backpack.
+- `max_subjects`: This does the same as `max_folders`, but for subjects inside folders. 
+### Advanced
+These are settings for the genetic algorithm. You can play around with these to get better results or performance. I'd recommend to read the code to understand what these do.
+- `population_size`: This changes how many configurations are used for calculations.
+- `cycle_count`: How many times the population is run trought the optimisation algorithm.
+- Note that the script seems to find the best weight pretty quickly and doesn't find anything better no matter how long it computes. I don't know if this is a bug or not, but I did observe similar behaviour when testing this with a completely random algorithm.
